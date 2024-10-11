@@ -1,0 +1,47 @@
+a:hover {
+    background-color: yellow;
+    font-size: 18px;
+  }
+.profile{
+    width: 183px;
+    height: 183px;
+    background-image: url(https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?cs=srgb&dl=pexels-souvenirpixels-417074.jpg&fm=jpg);
+    background-size: cover;
+    border-radius: 50%;
+    position: relative
+}
+
+.notify{
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    right: 20PX;
+}
+table{
+    margin-top: 15px;
+    border: 1px solid;
+    border-collapse: collapse;
+    width: 50%;
+}
+th{
+    background-color: azure;
+}
+td{
+    border: 1px solid;
+}
+button{
+    background-color: rgb(146, 255, 255);
+    border: none;
+    color: rgb(0, 0, 0);
+    border-radius: 10%;
+    column-gap: 5px;
+}
+.button1:hover{
+    background-color: red;
+}

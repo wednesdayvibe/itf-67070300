@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITF-WEB</title>
+    <link rel="stylesheet" href="lab-14.css">
+</head>
+<body>
+    <center>
+    <div class="profile" id="profile">
+        <div class="notify"><p>1</p></div>
+    </div>
+    <a href="https://github.com/wednesdayvibe"><h1 id="username"> Itthipat Yoosiri 67070300, ok</h1></a>
+    <label> Set Username </label><input type="text" id="input"><button onclick="setName()"> Set </button>
+    <p><label> Set Profile Image  </label><input type="text" id="inputpfp"><button onclick="setImage()"> Set </button></p>
+    <p><label>Name </label><input type="text" id="name"> <label>No. </label><input type="text" id="phone">
+        <button class="button1" onclick="updateRow()">ADD</button>
+        <button onclick="saveCSV()">EXPORT</button>
+    </p>
+    <table id="table" style="border: 1px solid black;">
+        <tr style="border: 1px solid black;">
+            <th style="border: 1px solid black;">
+                ID
+            </th>
+            <th style="border: 1px solid black;">
+                Name
+            </th>
+            <th style="border: 1px solid black;">
+                Phone Number
+            </th>
+        </tr>
+    </table>
+    <div class="container">
+    </div>
+    <script>
+        const username = document.getElementById("username");
+        const input = document.getElementById("input");
+        const profile = document.getElementById("profile");
+        const inputpfp = document.getElementById("inputpfp")
+        const table = document.getElementById("table");
+        const name = document.getElementById("name");
+        const phone = document.getElementById("phone");
+
+        let count = 0;
+        var phonenumber = [];
+        const addBtn = document.getElementById("ADD");
+        const saveButton = document.getElementById("EXPORT");
+        console.log(saveButton.value)
+
+        function setName(){
+            username.textContent = input.value + ", ok";
+            input.value = "";
+        }
+        function setImage(){
+            profile.style.backgroundImage ="url(" + inputpfp.value + ")";
+        }
+        function setName1(){
+            name1.textContent = input.value;
+            inout.value = "";
+        }
+        function updateRow(){
+            count += 1;
+            const row = document.createElement("tr");
+            const cellNo = document.createElement("td");
+            const cellName = document.createElement("td");
+            const cellTel = document.createElement("td");
+            cellNo.textContent = count;
+            cellName.textContent = document.getElementById("name").value;
+            cellTel.textContent = document.getElementById("phone").value;
+            row.appendChild(cellNo);
+            row.appendChild(cellName);
+            row.appendChild(cellTel);
+            const table = document.getElementById("table");
+            table.appendChild(row);
+            
+            let arr = [];
+            arr.cellNo(count);
+            arr.cellName(document.getElementById("name").value);
+            arr.cellTel(document.getElementById("phone").value);
+            phonenumber.push(arr);
+            console.log(phonenumber);
+            
+            document.getElementById("name").value = "";
+            document.getElementById("phone").value = "";
+        };
+        function saveCSV() {
+            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "data.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+    </script>
+    </center>
+</body>
+</html>
